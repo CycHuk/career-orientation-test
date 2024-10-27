@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - PORT=${PORT}
+      - ACCOUNTING_PASSWORD=${ACCOUNTING_PASSWORD}
+    restart: always
+    container_name: career-orientation-test

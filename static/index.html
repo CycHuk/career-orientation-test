@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Профориентационный тест</title>
+
+    <link rel="stylesheet" href="Styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="Styles/toastr.min.css" />
+    <link rel="stylesheet" href="Styles/style.css" />
+  </head>
+  <body>
+    <div
+      class="modal fade"
+      id="agreementModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="agreementModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="agreementModalLabel">
+              Соглашение на обработку персональных данных
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Закрыть"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Настоящее соглашение разработано в соответствии с
+              законодательством о защите персональных данных и регулирует
+              порядок обработки персональных данных, предоставляемых
+              пользователями в рамках использования приложения для
+              профориентационного тестирования (далее – «Приложение»).
+            </p>
+            <h6>1. Определение персональных данных и цели их обработки</h6>
+            <p>
+              1.1. В рамках использования Приложения обрабатываются следующие
+              персональные данные пользователей:
+            </p>
+            <ul>
+              <li>Номер телефона (при указании пользователем);</li>
+              <li>Результаты профориентационного тестирования.</li>
+            </ul>
+            <h6>2. Принципы обработки персональных данных</h6>
+            <p>
+              2.1. Обработка персональных данных осуществляется на основе
+              принципов законности, конфиденциальности, минимизации данных и их
+              безопасности.
+            </p>
+            <p>
+              2.2. Приложение не собирает и не обрабатывает данные, не связанные
+              с достижением указанных целей (например, ФИО, адреса, дату
+              рождения и т.п.).
+            </p>
+            <h6>3. Порядок и условия обработки персональных данных</h6>
+            <p>
+              3.1. Персональные данные пользователей обрабатываются с
+              использованием автоматизированных и неавтоматизированных средств.
+            </p>
+            <p>
+              3.2. Доступ к персональным данным имеют только уполномоченные
+              сотрудники или партнеры, задействованные в обеспечении
+              функционирования Приложения и связанных услуг.
+            </p>
+            <h6>4. Хранение и защита персональных данных</h6>
+            <p>
+              4.1. Для защиты персональных данных пользователей принимаются
+              необходимые организационные и технические меры, направленные на
+              предотвращение несанкционированного доступа, уничтожения,
+              изменения и распространения данных.
+            </p>
+            <h6>5. Права пользователей</h6>
+            <p>5.1. Пользователи имеют право на:</p>
+            <ul>
+              <li>
+                Получение информации о целях и способах обработки их
+                персональных данных;
+              </li>
+              <li>
+                Запрос на исправление, блокировку или удаление предоставленных
+                данных;
+              </li>
+              <li>Отзыв согласия на обработку персональных данных.</li>
+            </ul>
+            <p>
+              5.2. Для реализации своих прав пользователи могут обратиться по
+              контактам, указанным в Приложении.
+            </p>
+            <h6>6. Заключительные положения</h6>
+            <p>
+              6.1. Продолжая использовать Приложение, пользователь выражает
+              согласие с настоящим соглашением и дает разрешение на обработку
+              своих персональных данных в рамках установленных целей.
+            </p>
+            <p>
+              6.2. Приложение оставляет за собой право вносить изменения в
+              настоящее соглашение. Обновленная версия соглашения будет
+              опубликована в Приложении и вступит в силу с момента публикации.
+            </p>
+            <p>
+              <strong>Контактная информация для связи:</strong>
+              <span class="phone-number">+7 (999) 999-99-99</span>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Закрыть
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="page_preview" class="page active">
+        <h1>Профориентационный тест</h1>
+
+        <div class="input-group">
+          <label for="phone">Введите номер для обратной связи:</label>
+          <input
+            type="tel"
+            id="tel"
+            name="tel"
+            placeholder="+7 (___) ___-__-__"
+            required
+          />
+        </div>
+
+        <div class="buttons">
+          <button id="feedbackButton">Пройти с обратной связью</button>
+          <button id="noFeedbackButton">Пройти без обратной связи</button>
+        </div>
+
+        <div class="privacy-notice">
+          Нажимая на кнопку, вы соглашаетесь с
+          <a href="#" data-toggle="modal" data-target="#agreementModal"
+            >обработкой персональных данных</a
+          >.
+        </div>
+      </div>
+
+      <div id="page_test" class="page">
+        <div id="info_container">
+          <h1>Информация о тестировании</h1>
+          <p>
+            Методика основана на выявлении профессиональных интересов
+            старшеклассников и помогает определить наиболее подходящую сферу для
+            будущего обучения и работы.
+          </p>
+          <p>
+            Участникам предлагается ответить «да» или «нет» на утверждения.
+            Результаты теста дают рекомендации по выбору направления для
+            профессионального развития.
+          </p>
+          <div class="buttons">
+            <button id="start_button">Далее</button>
+          </div>
+        </div>
+
+        <div id="question_container" class="question"></div>
+        <div class="buttons">
+          <button id="yes_button">Да</button>
+          <button id="no_button">Нет</button>
+        </div>
+      </div>
+
+      <div id="page_result" class="page">
+        <div id="columns">
+          <div id="column_1">
+            <div class="column-title">Человек-природа</div>
+            <div class="percentage" id="percentageA"></div>
+            <div class="bar-container">
+              <div class="bar" id="barA"></div>
+            </div>
+            <p class="result_info">
+              <b>Описание:</b> Эти специалисты любят природу не только как
+              отдых, но и как объект глубокого изучения и заботы. Им требуется
+              инициатива, терпение и способность прогнозировать изменения в
+              экосистемах.
+            </p>
+            <div class="more-info">
+              <span class="info-toggle" onclick="toggleInfo('infoA')"
+                >Куда лучше поступить</span
+              >
+              <span class="arrow-down">↓</span>
+              <div class="info" id="infoA" style="display: none">
+                Нет информации.
+              </div>
+            </div>
+          </div>
+
+          <div id="column_2">
+            <div class="column-title">Человек-техника</div>
+            <div class="percentage" id="percentageB"></div>
+            <div class="bar-container">
+              <div class="bar" id="barB"></div>
+            </div>
+            <p class="result_info">
+              <b>Описание:</b> Работая с техническими объектами, специалисты
+              должны быть точными и последовательными. Важно практическое
+              мышление и умение мыслить креативно, соединяя и разъединяя
+              элементы техники.
+            </p>
+            <div class="more-info">
+              <span class="info-toggle" onclick="toggleInfo('infoB')"
+                >Куда лучше поступить</span
+              >
+              <span class="arrow-down">↓</span>
+              <div class="info" id="infoB" style="display: none">
+                Нет информации.
+              </div>
+            </div>
+          </div>
+
+          <div id="column_3">
+            <div class="column-title">Человек-знаковая система</div>
+            <div class="percentage" id="percentageC"></div>
+            <div class="bar-container">
+              <div class="bar" id="barC"></div>
+            </div>
+            <p class="result_info">
+              <b>Описание:</b> Специалисты работают с различными знаками и
+              символами, требуя способности абстрагироваться от физических
+              свойств объектов. Внимание и способность интерпретировать
+              информацию из знаков имеют ключевое значение.
+            </p>
+            <div class="more-info">
+              <span class="info-toggle" onclick="toggleInfo('infoC')"
+                >Куда лучше поступить</span
+              >
+              <span class="arrow-down">↓</span>
+              <div class="info" id="infoC" style="display: none">
+                Нет информации.
+              </div>
+            </div>
+          </div>
+
+          <div id="column_4">
+            <div class="column-title">Человек-искусство</div>
+            <div class="percentage" id="percentageD"></div>
+            <div class="bar-container">
+              <div class="bar" id="barD"></div>
+            </div>
+            <p class="result_info">
+              <b>Описание:</b> Профессии, связанные с искусством, требуют
+              творческого воображения, образного мышления и таланта. Трудолюбие
+              также играет важную роль.
+            </p>
+            <div class="more-info">
+              <span class="info-toggle" onclick="toggleInfo('infoD')"
+                >Куда лучше поступить</span
+              >
+              <span class="arrow-down">↓</span>
+              <div class="info" id="infoD" style="display: none">
+                Нет информации.
+              </div>
+            </div>
+          </div>
+
+          <div id="column_5">
+            <div class="column-title">Человек-человек</div>
+            <div class="percentage" id="percentageE"></div>
+            <div class="bar-container">
+              <div class="bar" id="barE"></div>
+            </div>
+            <p class="result_info">
+              <b>Описание:</b> В профессиях, ориентированных на взаимодействие с
+              людьми, важны общительность и способность понимать намерения
+              других. Необходимы терпение и хорошее настроение для успешного
+              общения.
+            </p>
+            <div class="more-info">
+              <span class="info-toggle" onclick="toggleInfo('infoE')"
+                >Куда лучше поступить</span
+              >
+              <span class="arrow-down">↓</span>
+              <div class="info" id="infoE" style="display: none">
+                Нет информации.
+              </div>
+            </div>
+          </div>
+        </div>
+        <button id="retryButton" onclick="retryTest()">Пройти еще раз</button>
+      </div>
+    </div>
+
+    <script src="libs/jquery-3.5.1.min.js"></script>
+    <script src="libs/popper.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/toastr.min.js"></script>
+    <script src="libs/maskinput.js"></script>
+    <script src="libs/xlsx.full.min.js"></script>
+    <script src="Scripts/questions.js"></script>
+    <script src="Scripts/script.js"></script>
+  </body>
+</html>

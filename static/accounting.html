@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Скачать отчет</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center">Скачать отчет</h1>
+      <form id="downloadForm" method="post" action="/api/download">
+        <div class="form-group">
+          <label for="password">Введите пароль</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Скачать</button>
+      </form>
+      <div id="message" class="mt-3"></div>
+    </div>
+
+    <script>
+      document.getElementById("downloadForm").onsubmit = function (event) {
+        event.preventDefault(); // Предотвращаем отправку формы для обработки через AJAX
+        const formData = new FormData(this);
+
+        fetch("/api/download", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.blob(); // Возвращаем blob (файл Excel)
+            } else {
+              throw new Error("Неверный пароль");
+            }
+          })
+          .then((blob) => {
+            // Создаем ссылку для загрузки файла
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Отчетность.xlsx";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url); // Очистка
+          })
+          .catch((error) => {
+            document.getElementById("message").innerText = error.message;
+            document.getElementById("message").classList.add("text-danger");
+          });
+      };
+    </script>
+  </body>
+</html>
