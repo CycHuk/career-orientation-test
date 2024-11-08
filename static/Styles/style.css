@@ -147,7 +147,7 @@ h1 {
   transition: background 0.3s;
 }
 
-.buttons button:hover {
+.buttons button:active {
   background: #1e5db3;
 }
 
@@ -286,6 +286,13 @@ h1 {
   position: relative;
 }
 
+@media (max-width: 600px) {
+  .more-info {
+    padding: 0px;
+    margin-top: 15px;
+  }
+}
+
 .info-toggle {
   cursor: pointer;
   font-size: 1rem;
@@ -327,4 +334,104 @@ h1 {
 
 #retryButton:hover {
   background-color: #45a049;
+}
+
+.info ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info ul li {
+  padding: 10px 15px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.info ul li:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.info ul li[data-toggle="modal"] {
+  font-weight: bold;
+}
+
+.info h3 {
+  font-size: 16px;
+}
+
+.program-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-family: Arial, sans-serif;
+  margin-bottom: 20px;
+}
+
+.table-header th {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.table-row td {
+  padding: 8px;
+  text-align: right;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 600px) {
+  .program-table,
+  .table-header,
+  .table-row,
+  .table-row td,
+  .table-header th {
+    display: block;
+    width: 100%;
+  }
+
+  .table-header {
+    display: none;
+  }
+
+  .table-row {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .table-row td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    font-size: 14px;
+    text-align: right;
+  }
+
+  .table-row td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #4caf50;
+    margin-right: 10px;
+  }
+
+  .table-row td:nth-child(1):before {
+    content: "Программа";
+  }
+
+  .table-row td:nth-child(2):before {
+    content: "Бюджетные места";
+  }
+
+  .table-row td:nth-child(3):before {
+    content: "Платные места";
+  }
 }

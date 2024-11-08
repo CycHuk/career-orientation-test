@@ -72,9 +72,7 @@ function displayQuestion() {
 
   if (currentQuestionIndex < totalQuestions) {
     const questionText = questions[currentQuestionIndex].question;
-    questionContainer.textContent = `${
-      currentQuestionIndex + 1
-    }/${totalQuestions}: ${questionText}`;
+    questionContainer.textContent = `${currentQuestionIndex + 1}/${totalQuestions}: ${questionText}`;
   } else {
     displayResults();
   }
@@ -194,4 +192,10 @@ function retryTest() {
 
   $("#page_result").removeClass("active");
   $("#page_preview").addClass("active");
+}
+
+function toggleDropdown(dropdownId) {
+  const dropdown = document.getElementById(dropdownId);
+
+  dropdown.classList.toggle("show");
 }
